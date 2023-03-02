@@ -98,9 +98,9 @@ namespace Quest
             // main game loop
             ChallengeGame(theAdventurer);
 
+            // ask the user if they want to play again
             while (true)
             {
-                // ask the user if they want to play again
                 Console.WriteLine();
                 Console.Write(
                     $"Do you wish to take on the challenge again, {theAdventurer.Name}? (Y/N): "
