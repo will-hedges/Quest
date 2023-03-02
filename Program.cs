@@ -16,6 +16,8 @@ namespace Quest
             Hat hat = new();
             hat.ShininessLevel = 6;
 
+            Prize prize = new Prize("a treasure chest filled with gold");
+
             // Make a new "Adventurer" object using the "Adventurer" class
             Console.Write($"What is your name?: ");
             string userName = Console.ReadLine().Trim();
@@ -108,10 +110,12 @@ namespace Quest
 
             // main game loop
             ChallengeGame(theAdventurer);
-
-            // ask the user if they want to play again
             while (true)
             {
+                // show the prize
+                prize.ShowPrize(theAdventurer);
+
+                // ask the user if they want to play again
                 Console.WriteLine();
                 Console.Write(
                     $"Do you wish to take on the challenge again, {theAdventurer.Name}? (Y/N): "
