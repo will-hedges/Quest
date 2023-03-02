@@ -9,7 +9,12 @@ namespace Quest
     {
         static void Main(string[] args)
         {
-            void ChallengeGame()
+            // Make a new "Adventurer" object using the "Adventurer" class
+            Console.Write($"What is your name?: ");
+            string userName = Console.ReadLine().Trim();
+            Adventurer theAdventurer = new Adventurer(userName);
+
+            void ChallengeGame(Adventurer adventurer)
             {
                 // Create a few challenges for our Adventurer's quest
                 // The "Challenge" Constructor takes three arguments
@@ -55,11 +60,6 @@ namespace Quest
                 int minAwesomeness = 0;
                 int maxAwesomeness = 100;
 
-                // Make a new "Adventurer" object using the "Adventurer" class
-                Console.Write($"What is your name?: ");
-                string userName = Console.ReadLine().Trim();
-                Adventurer theAdventurer = new Adventurer(userName);
-
                 // A list of challenges for the Adventurer to complete
                 // Note we can use the List class here because have the line "using System.Collections.Generic;" at the top of the file.
                 List<Challenge> challenges = new List<Challenge>()
@@ -96,17 +96,26 @@ namespace Quest
             }
 
             // main game loop
-            ChallengeGame();
+            ChallengeGame(theAdventurer);
 
-            // ask the user if they want to play again
-            Console.WriteLine();
-            Console.Write($"Do you wish to take on the challenge again? (Y/N): ");
-            string repeatQuest = Console.ReadLine().ToLower().Trim();
-
-            // if they answer "y", repeat the main game
-            if (repeatQuest == "y")
+            while (true)
             {
-                ChallengeGame();
+                // ask the user if they want to play again
+                Console.WriteLine();
+                Console.Write(
+                    $"Do you wish to take on the challenge again, {theAdventurer.Name}? (Y/N): "
+                );
+                string repeatQuest = Console.ReadLine().ToLower().Trim();
+
+                // if they answer "y", repeat the main game
+                if (repeatQuest == "y")
+                {
+                    ChallengeGame(theAdventurer);
+                }
+                else
+                {
+                    break;
+                }
             }
         }
     }
