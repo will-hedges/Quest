@@ -9,10 +9,14 @@ namespace Quest
     {
         static void Main(string[] args)
         {
+            Robe robe = new();
+            robe.Colors = new List<string>() { "red", "white", "blue" };
+            robe.Length = 69;
+
             // Make a new "Adventurer" object using the "Adventurer" class
             Console.Write($"What is your name?: ");
             string userName = Console.ReadLine().Trim();
-            Adventurer theAdventurer = new Adventurer(userName);
+            Adventurer theAdventurer = new Adventurer(userName, robe);
 
             void ChallengeGame(Adventurer adventurer)
             {
@@ -70,6 +74,10 @@ namespace Quest
                     guessRandom,
                     favoriteBeatle
                 };
+
+                // Before the adventurer starts their challenge, call the GetDescription method
+                //  and print the results to the console.
+                Console.WriteLine($"{theAdventurer.GetDescription()}");
 
                 // Loop through all the challenges and subject the Adventurer to them
                 foreach (Challenge challenge in challenges)
