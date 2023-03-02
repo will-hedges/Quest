@@ -60,6 +60,34 @@ namespace Quest
                     20
                 );
 
+                Challenge howManyStrings = new Challenge(
+                    @"How many strings does a bass guitar have?
+    1) One
+    2) Two
+    3) Three
+    4) Four
+",
+                    4,
+                    20
+                );
+
+                Challenge floofyCat = new Challenge(
+                    @"Who is the floofiest cat?
+    1) George
+    2) Sammy
+    3) Pie
+    4) Bingus
+",
+                    2,
+                    25
+                );
+
+                Challenge luckyNumber = new Challenge("What is my lucky number?", 6, 50);
+
+                Challenge birthYear = new Challenge("What year was I born in?", 1992, 25);
+
+                Challenge chileYear = new Challenge("What year did I go to Chile?", 2013, 30);
+
                 // "Awesomeness" is like our Adventurer's current "score"
                 // A higher Awesomeness is better
 
@@ -77,15 +105,33 @@ namespace Quest
                     theAnswer,
                     whatSecond,
                     guessRandom,
-                    favoriteBeatle
+                    favoriteBeatle,
+                    howManyStrings,
+                    floofyCat,
+                    luckyNumber,
+                    birthYear,
+                    chileYear
                 };
 
                 // Before the adventurer starts their challenge, call the GetDescription method
                 //  and print the results to the console.
                 Console.WriteLine($"{theAdventurer.GetDescription()}");
 
+                // choose 5 challenges at random
+                Random rnd = new Random();
+                List<Challenge> randomChallenges = new List<Challenge>();
+
+                while (randomChallenges.Count < 5)
+                {
+                    Challenge randomChallenge = challenges[rnd.Next(challenges.Count)];
+                    if (!randomChallenges.Contains(randomChallenge))
+                    {
+                        randomChallenges.Add(randomChallenge);
+                    }
+                }
+
                 // Loop through all the challenges and subject the Adventurer to them
-                foreach (Challenge challenge in challenges)
+                foreach (Challenge challenge in randomChallenges)
                 {
                     challenge.RunChallenge(theAdventurer);
                 }
