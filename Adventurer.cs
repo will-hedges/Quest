@@ -15,17 +15,21 @@ namespace Quest
         // add an immutable Robe type property, ColorfulRobe
         public Robe ColorfulRobe { get; }
 
+        // add a Hat-type property, ShinyHat
+        public Hat ShinyHat { get; }
+
         // A constructor to make a new Adventurer object with a given name
-        public Adventurer(string name, Robe colorfulRobe)
+        public Adventurer(string name, Robe colorfulRobe, Hat shinyHat)
         {
             Name = name;
             Awesomeness = 50;
             ColorfulRobe = colorfulRobe;
+            ShinyHat = shinyHat;
         }
 
         public string GetDescription()
         {
-            return $"{Name} is wearing a {ColorfulRobe.Length}-inch robe in {string.Join(", ", ColorfulRobe.Colors)}.";
+            return $"{Name} is wearing a {ColorfulRobe.Length}-inch robe in {string.Join(", ", ColorfulRobe.Colors)} and a {ShinyHat.ShininessDescription} hat.";
         }
 
         // This method returns a string that describes the Adventurer's status
