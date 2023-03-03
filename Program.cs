@@ -23,6 +23,35 @@ namespace Quest
             string userName = Console.ReadLine().Trim();
             Adventurer theAdventurer = new Adventurer(userName, robe, hat);
 
+            // main game loop
+            ChallengeGame(theAdventurer);
+            while (true)
+            {
+                // show the prize
+                prize.ShowPrize(theAdventurer);
+
+                // ask the user if they want to play again
+                Console.WriteLine();
+                Console.Write(
+                    $"Do you wish to take on the challenge again, {theAdventurer.Name}? (Y/N): "
+                );
+                string repeatQuest = Console.ReadLine().ToLower().Trim();
+
+                // if they answer "y", repeat the main game
+                if (repeatQuest == "y")
+                {
+                    // set initial awesomeness to 50 * # of correct answers from the last game
+                    // and reset correct answers to 0;
+                    theAdventurer.Awesomeness = 50 + (theAdventurer.CorrectAnswers * 10);
+                    theAdventurer.CorrectAnswers = 0;
+                    ChallengeGame(theAdventurer);
+                }
+                else
+                {
+                    break;
+                }
+            }
+
             void ChallengeGame(Adventurer adventurer)
             {
                 // Create a few challenges for our Adventurer's quest
@@ -151,31 +180,6 @@ namespace Quest
                     Console.WriteLine(
                         "I guess you did...ok? ...sorta. Still, you should get out of my sight."
                     );
-                }
-            }
-
-            // main game loop
-            ChallengeGame(theAdventurer);
-            while (true)
-            {
-                // show the prize
-                prize.ShowPrize(theAdventurer);
-
-                // ask the user if they want to play again
-                Console.WriteLine();
-                Console.Write(
-                    $"Do you wish to take on the challenge again, {theAdventurer.Name}? (Y/N): "
-                );
-                string repeatQuest = Console.ReadLine().ToLower().Trim();
-
-                // if they answer "y", repeat the main game
-                if (repeatQuest == "y")
-                {
-                    ChallengeGame(theAdventurer);
-                }
-                else
-                {
-                    break;
                 }
             }
         }

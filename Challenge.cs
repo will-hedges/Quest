@@ -36,17 +36,15 @@ namespace Quest
             if (isNumber && numAnswer == _correctAnswer)
             {
                 Console.WriteLine("Well Done!");
-
                 // Note how we access an Adventurer object's property
                 adventurer.Awesomeness += _awesomenessChange;
+                adventurer.CorrectAnswers++;
             }
             else
             {
                 Console.WriteLine("You have failed the challenge, there will be consequences.");
                 adventurer.Awesomeness -= _awesomenessChange;
             }
-
-            // Note how we call an Adventurer object's method
             Console.WriteLine(adventurer.GetAdventurerStatus());
             Console.WriteLine();
         }

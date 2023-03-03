@@ -12,6 +12,9 @@ namespace Quest
         //  So it can be read and changed by any code in the application
         public int Awesomeness { get; set; }
 
+        // count the number of correct answers given between games
+        public int CorrectAnswers { get; set; }
+
         // add an immutable Robe type property, ColorfulRobe
         public Robe ColorfulRobe { get; }
 
@@ -23,6 +26,7 @@ namespace Quest
         {
             Name = name;
             Awesomeness = 50;
+            CorrectAnswers = 0;
             ColorfulRobe = colorfulRobe;
             ShinyHat = shinyHat;
         }
